@@ -104,7 +104,7 @@ const infoStyle = StyleSheet.create({
     },    
     histtextInput:{
         height:40,
-        backgroundColor:'#C0C0C0',
+        backgroundColor: '#efefef',
         borderRadius:30,
         paddingLeft:55,
         width:270,

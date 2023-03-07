@@ -56,10 +56,8 @@ export default function Usercards({ navigation }) {
                 </View>
             </TouchableOpacity>
             <TouchableOpacity style={usrcards.card}>
-
                 <Entypo style={usrcards.plusicon} name="plus" size={24} color="purple" />
                 <Text style={usrcards.createccV}>
-
                     Criar cartão virtual
                 </Text>
             </TouchableOpacity>

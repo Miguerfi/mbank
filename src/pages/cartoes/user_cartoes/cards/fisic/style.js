@@ -39,7 +39,7 @@ const fscard = StyleSheet.create({
         position: 'absolute',
     },
     circle: {
-        backgroundColor: '#C0C0C0',
+        backgroundColor: '#efefef',
         height: 80,
         width: 80,
         borderRadius: 50,
@@ -50,7 +50,7 @@ const fscard = StyleSheet.create({
         alignItems: 'center',
     },
     circle2: {
-        backgroundColor: '#C0C0C0',
+        backgroundColor: '#efefef',
         height: 80,
         width: 80,
         borderRadius: 50,
@@ -139,16 +139,16 @@ const fscard = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 16,
     },
-    sizebox:{
-        height:110,
+    sizebox: {
+        height: 110,
     },
-    click:{
-        width:80,
-        height:80,
-        position:'absolute',
-        marginLeft:240,
-        marginTop:60,
-        borderRadius:50,
+    click: {
+        width: 80,
+        height: 80,
+        position: 'absolute',
+        marginLeft: 240,
+        marginTop: 60,
+        borderRadius: 50,
 
     }
 

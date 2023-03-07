@@ -25,7 +25,8 @@ const usrcards = StyleSheet.create({
     },
     cardView:{
         marginTop:15,
-        backgroundColor:'#C0C0C0',
+
+        backgroundColor: '#efefef',
         height:50,
         width:250,
         borderRadius:15,

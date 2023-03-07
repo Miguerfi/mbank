@@ -5,7 +5,8 @@ const style = StyleSheet.create({
         height: 170
     },
     list: {
-        backgroundColor: '#C0C0C0',
+
+        backgroundColor: '#efefef',
         height: 80,
         width: 80,
         borderRadius: 50,

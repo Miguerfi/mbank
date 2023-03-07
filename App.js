@@ -1,20 +1,31 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View} from 'react-native';
+import MainScreen from './src/pages/main';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import ContaInfos from './src/pages/conta';
+import Infos from './src/pages/conta/Infos';
+import infoStyle from './src/pages/conta/Infos/style';
+import Pagamento from './src/pages/conta/Pagamento';
+import Usercards from './src/pages/cartoes/user_cartoes';
+import Fisiccard from './src/pages/cartoes/user_cartoes/cards/fisic';
 
+const Stack = createNativeStackNavigator();
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    return (
+        <NavigationContainer>
+            <Stack.Navigator>
+                <Stack.Screen
+                    name='Main'
+                    component={MainScreen}
+                    options={{ header: () => null }}
+                />
+                <Stack.Screen name='a' options={{ title: '',headerTransparent:true,headerBackImageSource:() => null}} component={Infos} />
+                <Stack.Screen name='Pagamento' options={{title:'',headerTransparent:true,headerBackImageSource:() => null}} component={Pagamento}/>
+                <Stack.Screen name='Usercards' options={{title:'',headerTransparent:true,headerBackImageSource:() => null}} component={Usercards}/>
+                <Stack.Screen  name='Fisiccard' options={{title:'Cartão físico',headerTitleAlign:'center',headerTransparent:true,headerBackImageSource:() => null}} component={Fisiccard}/>
+             </Stack.Navigator>
+        </NavigationContainer>
+    );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

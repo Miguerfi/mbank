@@ -6,11 +6,13 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { FlatList } from "react-native-gesture-handler";
+import { useNavigation } from "@react-navigation/native";
 
 
 export default function Fisiccard({ navigation }) {
 
     const [refreshing, setRefreshing] = useState(false);
+
     const ccdefault = require('../../../../../../img/mainbasev2.png')
     const onRefresh = useCallback(() => {
         setRefreshing(true);
@@ -18,6 +20,9 @@ export default function Fisiccard({ navigation }) {
 
         setRefreshing(false);
     }, []);
+
+    const secondary_navigation = useNavigation();
+    const Confgicard = () => { secondary_navigation.navigate('ConfigCardFisic') }
     return (
 
         <View style={fscard.main}>
@@ -26,7 +31,6 @@ export default function Fisiccard({ navigation }) {
             >
                 <AntDesign style={fscard.closebutton} name="close" size={30} color="black" />
                 <View style={fscard.drawcc}>
-
                     <LinearGradient
                         colors={['#ae40f5', '#830ad1']}
                         style={{ flex: 1, borderRadius: 10 }}
@@ -34,7 +38,6 @@ export default function Fisiccard({ navigation }) {
                         end={{ x: 0, y: 0 }}
                     >
                     </LinearGradient>
-
                     <Image style={fscard.basecard} source={ccdefault} />
                     <Text style={fscard.namecc}>Jose M A Silva</Text>
                 </View>
@@ -43,10 +46,12 @@ export default function Fisiccard({ navigation }) {
                         <Feather name="lock" style={fscard.icons} size={29} color="black" />
                         <Text style={fscard.circleText}>Bloquear</Text>
                     </View>
-                    <View style={fscard.circle2}>
-                        <Ionicons name="settings-outline" style={fscard.icons} size={30} color="black" />
-                        <Text style={fscard.circleText}>Configurar</Text>
-                    </View>
+                    <TouchableOpacity style={fscard.click} onPress={Confgicard} >
+                        <View  style={fscard.circle2}>
+                            <Ionicons name="settings-outline" style={fscard.icons} size={30} color="black" />
+                            <Text style={fscard.circleText}>Configurar</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
                 <View style={fscard.infocard}>
                     <Text style={fscard.infocardHeaderText}>Para compras online,use seu cartão virtual</Text>

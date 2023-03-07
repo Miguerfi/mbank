@@ -43,22 +43,20 @@ const fscard = StyleSheet.create({
         height: 80,
         width: 80,
         borderRadius: 50,
-        marginLeft: 60,
+        marginLeft: 53,
         marginTop: 60,
         marginRight: 5,
         position: 'absolute',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     circle2: {
         backgroundColor: '#C0C0C0',
         height: 80,
         width: 80,
         borderRadius: 50,
-        marginLeft: 225,
-        marginTop: 60,
         marginRight: 5,
         alignItems: 'center',
-        position: 'absolute'
+        position: 'absolute',
     },
     circleText: {
         height: 375,
@@ -143,6 +141,15 @@ const fscard = StyleSheet.create({
     },
     sizebox:{
         height:110,
+    },
+    click:{
+        width:80,
+        height:80,
+        position:'absolute',
+        marginLeft:240,
+        marginTop:60,
+        borderRadius:50,
+
     }
 
 })

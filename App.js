@@ -9,6 +9,8 @@ import infoStyle from './src/pages/conta/Infos/style';
 import Pagamento from './src/pages/conta/Pagamento';
 import Usercards from './src/pages/cartoes/user_cartoes';
 import Fisiccard from './src/pages/cartoes/user_cartoes/cards/fisic';
+import ConfigCard from './src/pages/cartoes/user_cartoes/cards/fisic/ConfigCard';
+import ConfigCardFisic from './src/pages/cartoes/user_cartoes/cards/fisic/ConfigCard';
 
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -24,6 +26,7 @@ export default function App() {
                 <Stack.Screen name='Pagamento' options={{title:'',headerTransparent:true,headerBackImageSource:() => null}} component={Pagamento}/>
                 <Stack.Screen name='Usercards' options={{title:'',headerTransparent:true,headerBackImageSource:() => null}} component={Usercards}/>
                 <Stack.Screen  name='Fisiccard' options={{title:'Cartão físico',headerTitleAlign:'center',headerTransparent:true,headerBackImageSource:() => null}} component={Fisiccard}/>
+                <Stack.Screen name='ConfigCardFisic' options={{title:'Configurar Cartão',headerTitleAlign:'center',headerTransparent:true,headerBackImageSource:() => null}} component={ConfigCardFisic}/>
              </Stack.Navigator>
         </NavigationContainer>
     );

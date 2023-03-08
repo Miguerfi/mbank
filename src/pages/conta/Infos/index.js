@@ -27,8 +27,6 @@ export default function Infos({ navigation }) {
 
     const onRefresh = useCallback(() => {
         setRefreshing(true);
-
-
         setRefreshing(false);
     }, []);
     return (

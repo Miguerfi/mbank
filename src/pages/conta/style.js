@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-
+import { Dimensions, StyleSheet } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 const accstyles = StyleSheet.create({
     conta:{
         marginTop:10,
@@ -8,7 +8,7 @@ const accstyles = StyleSheet.create({
         marginLeft:7.5,
     },
     contaText:{
-        fontSize:20,
+        fontSize:RFValue(13,Dimensions.get('screen').width), 
         marginTop:10,
         marginLeft:3,
         color:'black',
@@ -16,13 +16,15 @@ const accstyles = StyleSheet.create({
         position:'absolute'
     },
     contaRight:{
-        marginTop:15,
-        marginLeft:300
+        marginTop:RFValue(15,Dimensions.get('screen').width),
+        marginLeft:RFValue(335,Dimensions.get('screen').height)
     },
     contaDinheiro:{
-        marginLeft:6,
+        marginLeft:RFValue(6,Dimensions.get('screen').height),
         fontWeight:'bold',
-        fontSize:18
+        fontSize:RFValue(11,Dimensions.get('screen').width),
+        position:'absolute',
+        marginTop:RFValue(40,Dimensions.get('screen').height),
     }
 
     

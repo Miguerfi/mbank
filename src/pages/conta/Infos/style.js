@@ -1,41 +1,41 @@
-import { StyleSheet } from "react-native";
-import Constants from 'expo-constants';
-
+import { Dimensions, StyleSheet } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 const infoStyle = StyleSheet.create({
     header:{
-        marginTop: Constants.statusBarHeight
+        marginTop: RFValue(26,Dimensions.get('screen').height)
+
     },
     backbutton:{
         marginLeft:13.5,
         marginTop:15,
     },
     textInfo:{
-        fontSize:23,
+        fontSize:RFValue(23,Dimensions.get('screen').height),
         color:'grey',
         marginLeft:13,
         fontWeight:'bold',
         marginTop:45
     },
     saldoInfo:{
-        fontSize:38,
+        fontSize:RFValue(38,Dimensions.get('screen').height),
         fontWeight:'bold',
         marginLeft:13,
-        marginTop:25
+        marginTop:RFValue(25,Dimensions.get('screen').height),
     },
     guardadoInfo:{
-        marginTop:50,
-        marginLeft:15,
+        marginTop:RFValue(50,Dimensions.get('screen').height),
+        marginLeft:RFValue(15,Dimensions.get('screen').height)
 
     },
     piggy:{
         position:'absolute',
-        marginTop:10
+        marginTop:RFValue(10,Dimensions.get('screen').height),
         
     },
     dinheiroGInfo:{
-        marginLeft:49,
+        marginLeft:RFValue(49,Dimensions.get('screen').height),
         color:'grey',
-        fontSize:19,
+        fontSize:RFValue(22,Dimensions.get('screen').height),
     },
     dinheiroInfo:{
         marginLeft:49,
@@ -46,7 +46,7 @@ const infoStyle = StyleSheet.create({
     setaRight:{
         position:'absolute',
         marginTop:10,
-        marginLeft:300,
+        marginLeft:RFValue(165,Dimensions.get('screen').width),
         color:'grey',
         fontWeight:'bold'
     },

@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-
+import { Dimensions, StyleSheet } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 const pfpstyles = StyleSheet.create({
     mainView:{
         flexDirection:'row',
@@ -16,7 +16,7 @@ const pfpstyles = StyleSheet.create({
         position:'absolute'
     },
     pfpAccountName:{
-        fontSize:20,
+        fontSize:RFValue(20,Dimensions.get('screen').height),
         fontWeight:"bold",
         color:'white',
         marginLeft:9,

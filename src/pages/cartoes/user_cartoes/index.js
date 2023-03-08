@@ -20,9 +20,6 @@ export default function Usercards({ navigation }) {
     }
     return (
         <View style={usrcards.main}>
-            <TouchableOpacity>
-                <AntDesign name="close" size={30} style={usrcards.backbutton} color="black" />
-            </TouchableOpacity>
             <Text style={usrcards.headerText} >Meus cartões</Text>
             <Text style={usrcards.headerTypecard}>
                 Cartão físico

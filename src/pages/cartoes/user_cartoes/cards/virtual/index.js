@@ -25,7 +25,6 @@ export default function Virtualcard({ navigation }) {
 
         <ScrollView >
             <View style={styleVirtual.main} >
-                <Entypo name="chevron-left" style={styleVirtual.backico} size={35.5} color="black" />
                 <View style={styleVirtual.drawcircle}>
                     <MaterialCommunityIcons name="credit-card-chip-outline" style={styleVirtual.cardicon} size={50} color="black" />
                 </View>

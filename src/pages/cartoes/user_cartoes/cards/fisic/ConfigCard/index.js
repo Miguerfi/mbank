@@ -12,7 +12,6 @@ export default function ConfigCardFisic({ navigation }) {
     };
     return (
         <View style={configCard.main}>
-            <AntDesign style={configCard.closebutton} name="close" size={30} color="black" />
             <View style={configCard.viewBox}>
                 <Text style={configCard.headerText}>Compras por Aproximação</Text>
                 <Text style={configCard.bodyText}>Desative para não permitir compras com contactless</Text>

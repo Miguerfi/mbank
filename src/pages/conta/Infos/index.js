@@ -37,9 +37,6 @@ export default function Infos({ navigation }) {
             <ScrollView showsVerticalScrollIndicator={false}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
             >
-                <TouchableOpacity>
-                    <Ionicons name="chevron-back-outline" style={infoStyle.backbutton} size={24} color="black" />
-                </TouchableOpacity>
                 <Text style={infoStyle.textInfo}>Saldo disponível</Text>
                 <Text style={infoStyle.saldoInfo}>R$ 800,25</Text>
                 <TouchableOpacity style={infoStyle.guardadoInfo}>

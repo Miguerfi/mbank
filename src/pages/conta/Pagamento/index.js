@@ -11,7 +11,6 @@ import { Ionicons } from '@expo/vector-icons';
 export default function Pagamento({ navigation }) {
     return (
         <View>
-            <AntDesign style={pgtStyle.closebutton} name="close" size={30} color="black" />
             <Text style={pgtStyle.textHeader}>Estas são suas opções de pagamento</Text>
 
             <TouchableOpacity>

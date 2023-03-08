@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, Text, View, Image } from 'react-native';
 import MainScreen from './src/pages/main';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -12,24 +12,27 @@ import Fisiccard from './src/pages/cartoes/user_cartoes/cards/fisic';
 import ConfigCard from './src/pages/cartoes/user_cartoes/cards/fisic/ConfigCard';
 import ConfigCardFisic from './src/pages/cartoes/user_cartoes/cards/fisic/ConfigCard';
 import Virtualcard from './src/pages/cartoes/user_cartoes/cards/virtual';
-
+import { HeaderBackButton } from '@react-navigation/elements';
 const Stack = createNativeStackNavigator();
-export default function App() {
+
+export default function App({ navigation }) {
+
     return (
         <NavigationContainer>
+
             <Stack.Navigator>
                 <Stack.Screen
                     name='Main'
                     component={MainScreen}
                     options={{ header: () => null }}
                 />
-                <Stack.Screen name='a' options={{ title: '',headerTransparent:true,headerBackImageSource:() => null}} component={Infos} />
-                <Stack.Screen name='Pagamento' options={{title:'',headerTransparent:true,headerBackImageSource:() => null}} component={Pagamento}/>
-                <Stack.Screen name='Usercards' options={{title:'',headerTransparent:true,headerBackImageSource:() => null}} component={Usercards}/>
-                <Stack.Screen name='Fisiccard' options={{title:'Cartão físico',headerTitleAlign:'center',headerTransparent:true,headerBackImageSource:() => null}} component={Fisiccard}/>
-                <Stack.Screen name='ConfigCardFisic' options={{title:'Configurar Cartão',headerTitleAlign:'center',headerTransparent:true,headerBackImageSource:() => null}} component={ConfigCardFisic}/>
-                <Stack.Screen name='Virtualcard' options={{title:'',headerTransparent:true,headerBackImageSource:() => null}}component={Virtualcard}/>
-             </Stack.Navigator>
+                <Stack.Screen name='a' options={{ title: '', headerTransparent: true}} component={Infos} />
+                <Stack.Screen name='Pagamento' options={{ title: '', headerTransparent: true}} component={Pagamento} />
+                <Stack.Screen name='Usercards' options={{ title: '', headerTransparent: true }} component={Usercards} />
+                <Stack.Screen name='Fisiccard' options={{ title: 'Cartão físico', headerTitleAlign: 'center', headerTransparent: true}} component={Fisiccard} />
+                <Stack.Screen name='ConfigCardFisic' options={{ title: 'Configurar Cartão', headerTitleAlign: 'center', headerTransparent: true }} component={ConfigCardFisic} />
+                <Stack.Screen name='Virtualcard' options={{ title: '', headerTransparent: true}} component={Virtualcard} />
+            </Stack.Navigator>
         </NavigationContainer>
     );
 }

@@ -29,7 +29,6 @@ export default function Fisiccard({ navigation }) {
             <ScrollView showsVerticalScrollIndicator={false}
                 refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} style={fscard.refresh} />}
             >
-                <AntDesign style={fscard.closebutton} name="close" size={30} color="black" />
                 <View style={fscard.drawcc}>
                     <LinearGradient
                         colors={['#ae40f5', '#830ad1']}

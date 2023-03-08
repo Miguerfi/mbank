@@ -23,8 +23,29 @@ const operacoesStyle = StyleSheet.create({
         marginLeft:2
     },
     cell:{
-        transform:[{rotate:'270deg'}],
+        marginTop:-5,
+        width:40,
+        height:40
+    },
+    deposito:{
+        width:55,
+        height:55,
         marginTop:-5
+    },
+    internacional:{
+        width:50,
+        height:50,
+        marginTop:-6
+    },
+    cobrar:{
+        width:45,
+        height:45,
+        marginTop:-5
+    },
+    doacao:{
+        width:42,
+        height:42,
+        marginTop:-4
     }
 })
 

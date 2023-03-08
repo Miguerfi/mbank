@@ -3,11 +3,10 @@ import { StyleSheet } from "react-native";
 import Constants from 'expo-constants';
 const operacoesStyle = StyleSheet.create({
     main:{
-        height:150,
+        height:170,
     },
     list:{
-        height:150,
-        width:450,
+        height:170,
     },
     pix:{
         width:35,

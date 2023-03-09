@@ -15,7 +15,7 @@ export default function ContaInfos() {
 
     useEffect(() => {
         (async () => {
-            const { status } = await ImagePicker.requestCameraPermissionsAsync();
+            const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
             if (status !== 'granted') {
                 alert('Desculpe, precisamos de permissão para acessar a câmera!');
             }

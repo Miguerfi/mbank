@@ -1,12 +1,13 @@
 import { StyleSheet } from "react-native";
 import Constants from 'expo-constants';
+import { responsiveWidth } from "react-native-responsive-dimensions";
 
 const fscard = StyleSheet.create({
     main: {
         height: 1100,
         flex: 1,
-        paddingRight: 10,
-        marginTop: Constants.statusBarHeight
+        paddingRight: 5,
+        marginTop: 80
     },
     textHeader: {
         fontSize: 18,
@@ -22,8 +23,7 @@ const fscard = StyleSheet.create({
     drawcc: {
         height: 252,
         width: 150,
-        marginTop: 100,
-        marginLeft: 107.5,
+        marginLeft: responsiveWidth(30),
         borderRadius: 10,
     },
     namecc: {

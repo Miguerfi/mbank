@@ -1,9 +1,10 @@
 import { StyleSheet } from "react-native";
 import Constants from 'expo-constants';
+import { responsiveWidth } from "react-native-responsive-dimensions";
 
 const infoStyle = StyleSheet.create({
     header: {
-        marginTop: Constants.statusBarHeight
+        marginTop:80,
     },
     backbutton: {
         marginLeft: 13.5,
@@ -46,7 +47,7 @@ const infoStyle = StyleSheet.create({
     setaRight: {
         position: 'absolute',
         marginTop: 10,
-        marginLeft: 300,
+        marginLeft: responsiveWidth(85),
         color: 'grey',
         fontWeight: 'bold'
     },

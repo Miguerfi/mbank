@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 const styleVirtual = StyleSheet.create({
+    container:{
+        marginTop:80
+    },
     main:{
         marginTop:115,
         padding:30,

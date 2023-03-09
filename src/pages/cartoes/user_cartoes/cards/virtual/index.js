@@ -23,7 +23,7 @@ export default function Virtualcard({ navigation }) {
     };
     return (
 
-        <ScrollView >
+        <ScrollView style={styleVirtual.container}>
             <View style={styleVirtual.main} >
                 <View style={styleVirtual.drawcircle}>
                     <MaterialCommunityIcons name="credit-card-chip-outline" style={styleVirtual.cardicon} size={50} color="black" />

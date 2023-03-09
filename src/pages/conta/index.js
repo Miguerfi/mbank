@@ -13,6 +13,15 @@ export default function ContaInfos() {
 
     const [status, requestPermission] = ImagePicker.useCameraPermissions();
 
+    useEffect(() => {
+        (async () => {
+            const { status } = await ImagePicker.requestCameraPermissionsAsync();
+            if (status !== 'granted') {
+                alert('Desculpe, precisamos de permissão para acessar a câmera!');
+            }
+        })();
+    }, []);
+
     const pickPfp = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.Images,

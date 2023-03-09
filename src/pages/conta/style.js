@@ -76,8 +76,12 @@ const accstyles = StyleSheet.create({
     mailbox: {
         marginTop: 65.5,
         marginLeft: 325
+    },
+    pfpImage:{
+        width: responsiveWidth(17),
+        height: responsiveWidth(17),
+        borderRadius:50,
     }
-
     
 })
 

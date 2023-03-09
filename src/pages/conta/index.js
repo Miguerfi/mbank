@@ -28,13 +28,30 @@ export default function ContaInfos() {
             aspect: [4, 3],
             quality: 1,
         })
-        console.log(result)
-
         if (!result.canceled) {
             setSelectedpfp(result.assets[0].uri);
+            try {
+                await AsyncStorage.setItem('selectedpfpUri', result.assets[0].uri)
+            } catch (e) {
+                console.log('Erro while trying save usr pfp image')
+            }
         }
-
     }
+
+    useEffect(() => {
+        const getSavedpfpUri = async () => {
+            try {
+                const uri = await AsyncStorage.getItem('selectedpfpUri');
+                if (uri !== null) {
+                    setSelectedpfp(uri)
+                }
+            } catch (e) {
+                console.log('error getting image URI from AsyncStorage:', e)
+            }
+
+        }
+        getSavedpfpUri();
+    }, [])
     const handlePress = () => {
         navigation.navigate('a');
     };
@@ -60,7 +77,7 @@ export default function ContaInfos() {
                         </TouchableOpacity>
                     </View>
                     <TouchableOpacity onPress={pickPfp} style={accstyles.pfpCircle} >
-                        {selectedpfp && <Image source={{ uri: selectedpfp }} />}
+                        {selectedpfp && <Image style={accstyles.pfpImage} source={{ uri: selectedpfp }} />}
                     </TouchableOpacity>
                     <Text style={accstyles.pfpAccountName}>Olá, Miguer</Text>
                 </View>

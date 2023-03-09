@@ -22,7 +22,7 @@ export default function Operacoes() {
         { id: 4, title: 'Recarga de Celular', icon: <Image source={cellphone} style={operacoesStyle.cell} /> },
         { id: 5, title: 'Depositar', icon: <Image style={operacoesStyle.deposito} source={deposito} /> },
         { id: 6, title: 'Transferir Internac.', icon: <Image style={operacoesStyle.internacional} source={transInter} /> },
-        { id: 7, title: 'Doação', icon: <Image style={operacoesStyle.doacao} source={doacao} /> },
+        { id: 7, title: 'Doação', icon: <Image style={operacoesStyle.doacao}source={doacao} /> },
         { id: 8, title: 'Cobrar', icon: <Image style={operacoesStyle.cobrar} source={cobrar} /> },
     ]
     return (

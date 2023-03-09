@@ -1,7 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
+import { responsiveWidth } from "react-native-responsive-dimensions";
 
 const pgtStyle = StyleSheet.create({
+    container:{
+        height:Dimensions.get('screen').height,
+        padding:2,
+    },
     textHeader:{
         fontWeight:'bold',
         fontSize:30,
@@ -25,7 +30,7 @@ const pgtStyle = StyleSheet.create({
         marginLeft:60,
         color:'grey',
         fontSize:18,
-        paddingRight:60
+        paddingRight:responsiveWidth(25)
     },
     QRCODE:{
         marginTop:85,
@@ -39,7 +44,7 @@ const pgtStyle = StyleSheet.create({
     stRight:{
         position:'absolute',
         marginTop:85,
-        marginLeft:325,
+        marginLeft:responsiveWidth(90),
     },
     newView:{
         position:'absolute',
@@ -49,7 +54,7 @@ const pgtStyle = StyleSheet.create({
         backgroundColor:'#830ad1',
         alignItems:'center',
         marginTop:85,
-        marginLeft:275
+        marginLeft:responsiveWidth(75)
     },
     newText:{
         color:'white',

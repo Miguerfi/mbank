@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { View, TouchableOpacity, Text, TextInput, Button } from "react-native";
+import { View, TouchableOpacity, Text, TextInput, Button, Image } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 import infoStyle from "./style";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -13,16 +13,22 @@ import { ScrollView, RefreshControl } from "react-native-gesture-handler";
 
 
 export default function Infos({ navigation }) {
-
+    const trazer_salario = require('../../../../img/bringpayment.png')
+    const extrato = require('../../../../img/extrato.png')
+    const cobrar = require('../../../../img/money-talk.png')
+    const deposito = require('../../../../img/deposito.png')
+    const transferir = require('../../../../img/1182952-200.png')
+    
     const [refreshing, setRefreshing] = useState(false);
+
     const data = [
-        { id: 1, title: 'Trazer Seu Salario', icon: <FontAwesome5 name="money-bill-alt" size={30} color="black" /> },
-        { id: 2, title: 'Pagar', icon: <FontAwesome name="barcode" size={30} color="black" /> },
-        { id: 3, title: 'Transferir', icon: <FontAwesome5 name="money-bill-wave" size={30} color="black" /> },
+        { id: 1, title: 'Trazer Seu Salario', icon:<Image source={trazer_salario} style={infoStyle.trazer_salario}/>},
+        { id: 2, title: 'Pagar', icon:  <Ionicons name="barcode" size={44} color="black" /> },
+        { id: 3, title: 'Transferir', icon: <Image source={transferir} style={infoStyle.transferir}/> },
         { id: 4, title: 'Investir', icon: <MaterialCommunityIcons name="signal" size={30} color="black" /> },
-        { id: 5, title: 'Pedir Extrato', icon: <AntDesign name="filetext1" size={30} color="black" /> },
-        { id: 6, title: 'Cobrar', icon: <FontAwesome5 name="dollar-sign" size={24} color="black" /> },
-        { id: 7, title: 'Depositar', icon: <Ionicons name="ios-download-outline" size={30} color="black" /> },
+        { id: 5, title: 'Pedir Extrato', icon: <Image source={extrato} style={infoStyle.extrato}/> },
+        { id: 6, title: 'Cobrar', icon: <Image  source={cobrar} style={infoStyle.cobrar} />},
+        { id: 7, title: 'Depositar', icon:<Image source={deposito} style={infoStyle.deposito}/>},
     ];
 
     const onRefresh = useCallback(() => {

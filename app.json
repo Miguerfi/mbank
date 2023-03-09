@@ -1,36 +1,44 @@
 {
-  "expo": {
-    "name": "Nubank",
-    "slug": "nubank",
-    "version": "1.5.2",
-    "orientation": "portrait",
-    "icon": "./assets/nuicon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      },
-      "package": "com.teste.miguerapp"
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "extra": {
-      "eas": {
-        "projectId": "f6f637a2-da06-4e3c-8795-21f9218ee72f"
-      }
+    "expo": {
+        "name": "Nubank",
+        "slug": "nubank",
+        "version": "1.5.2",
+        "orientation": "portrait",
+        "icon": "./assets/nuicon.png",
+        "userInterfaceStyle": "light",
+        "plugins": [
+            [
+                "expo-image-picker",
+                {
+                    "photosPermission": "Mudar a foto de Perfil"
+                }
+            ]
+        ],
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "assetBundlePatterns": [
+            "**/*"
+        ],
+        "ios": {
+            "supportsTablet": true
+        },
+        "android": {
+            "adaptiveIcon": {
+                "foregroundImage": "./assets/adaptive-icon.png",
+                "backgroundColor": "#ffffff"
+            },
+            "package": "com.teste.miguerapp"
+        },
+        "web": {
+            "favicon": "./assets/favicon.png"
+        },
+        "extra": {
+            "eas": {
+                "projectId": "f6f637a2-da06-4e3c-8795-21f9218ee72f"
+            }
+        }
     }
-  }
 }

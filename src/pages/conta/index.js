@@ -1,20 +1,38 @@
-import React, { useState } from "react";
-import { View, TouchableOpacity, Text } from "react-native";
+import React, { useState, useEffect } from "react";
+import { View, TouchableOpacity, Text, Image } from "react-native";
 import accstyles from "./style";
 import Infos from "./Infos";
 import { useNavigation } from "@react-navigation/native";
-import { FontAwesome5,MaterialCommunityIcons,Entypo,AntDesign } from '@expo/vector-icons';
+import { FontAwesome5, MaterialCommunityIcons, Entypo, AntDesign } from '@expo/vector-icons';
+import * as ImagePicker from 'expo-image-picker';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function ContaInfos() {
     const navigation = useNavigation();
+    const [selectedpfp, setSelectedpfp] = useState(null)
 
+    const [status, requestPermission] = ImagePicker.useCameraPermissions();
+
+    const pickPfp = async () => {
+        let result = await ImagePicker.launchImageLibraryAsync({
+            mediaTypes: ImagePicker.MediaTypeOptions.Images,
+            aspect: [4, 3],
+            quality: 1,
+        })
+        console.log(result)
+
+        if (!result.canceled) {
+            setSelectedpfp(result.assets[0].uri);
+        }
+
+    }
     const handlePress = () => {
         navigation.navigate('a');
     };
 
     const accountBalace = "800,25"
 
-    const [hidevalue, sethideValue ] = useState(accountBalace)
+    const [hidevalue, sethideValue] = useState(accountBalace)
     const hiddenvalue = "●●●●"
 
     return (
@@ -22,7 +40,7 @@ export default function ContaInfos() {
             <View style={accstyles.container}>
                 <View style={accstyles.mainView}>
                     <View style={accstyles.iconsbox}>
-                        <TouchableOpacity onPress={() => {sethideValue(hidevalue === hiddenvalue ? accountBalace : hiddenvalue )}} style={accstyles.clickicons} >
+                        <TouchableOpacity onPress={() => { sethideValue(hidevalue === hiddenvalue ? accountBalace : hiddenvalue) }} style={accstyles.clickicons} >
                             <Entypo name="eye" size={24} color="white" />
                         </TouchableOpacity>
                         <TouchableOpacity style={accstyles.clickicons}>
@@ -32,7 +50,9 @@ export default function ContaInfos() {
                             <MaterialCommunityIcons name="email-plus-outline" size={24} color="white" />
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={accstyles.pfpCircle} />
+                    <TouchableOpacity onPress={pickPfp} style={accstyles.pfpCircle} >
+                        {selectedpfp && <Image source={{ uri: selectedpfp }} />}
+                    </TouchableOpacity>
                     <Text style={accstyles.pfpAccountName}>Olá, Miguer</Text>
                 </View>
             </View>

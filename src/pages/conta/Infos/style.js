@@ -4,7 +4,7 @@ import { responsiveWidth } from "react-native-responsive-dimensions";
 
 const infoStyle = StyleSheet.create({
     header: {
-        marginTop:80,
+        marginTop:65.5,
     },
     backbutton: {
         marginLeft: 13.5,

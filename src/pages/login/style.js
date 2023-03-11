@@ -33,6 +33,9 @@ const loginStyle = StyleSheet.create({
         borderRadius:50,
         marginTop:10
         
+    },
+    createText:{
+        color:'#830ad1',
     }
 
 

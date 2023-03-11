@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { View, TextInput, Alert,TouchableOpacity } from 'react-native';
-import loginStyle from './style'
+import { View, TextInput, Alert, TouchableOpacity, Text } from 'react-native';
+import createaccountStyle from './style';
+
 export default function UserForm({ navigation }) {
-    const [id, setId] = useState('');
     const [fullName, setFullName] = useState('');
     const [cpf, setCpf] = useState('');
     const [nick, setNick] = useState('');
@@ -37,32 +37,37 @@ export default function UserForm({ navigation }) {
                 Alert.alert('Erro', 'Não foi possível conectar ao servidor.');
             });
     };
-
     return (
         <View style={createaccountStyle.container}>
             <TextInput
                 placeholder="Nome completo"
                 value={fullName}
                 onChangeText={text => setFullName(text)}
+                style={createaccountStyle.textBox}
             />
-            <TextInput 
+            <TextInput
                 placeholder="CPF"
                 value={cpf}
                 onChangeText={text => setCpf(text)}
+                style={createaccountStyle.textBox}
             />
             <TextInput
                 placeholder="Apelido"
                 value={nick}
                 onChangeText={text => setNick(text)}
+                style={createaccountStyle.textBox}
             />
             <TextInput
                 placeholder="Data de nascimento"
                 value={birthdate}
                 onChangeText={text => setBirthdate(text)}
+                style={createaccountStyle.textBox}
             />
             <View>
                 <TouchableOpacity style={createaccountStyle.button} title="Cadastrar" onPress={handlePress} >
-                    Create Account
+                    <Text style={createaccountStyle.text}>
+                        Create Account
+                    </Text>
                 </TouchableOpacity>
             </View>
         </View>

@@ -5,7 +5,7 @@ import ContaInfos from "../conta";
 import Operacoes from "../operacoes";
 import Cartoes from "../cartoes";
 
-export default function MainScreen() {
+export default function MainScreen({ navigation }) {
     return (
         <View >
             <ContaInfos />

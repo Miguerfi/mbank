@@ -35,6 +35,7 @@ export default function App({ navigation }) {
                 <Stack.Screen name='Fisiccard' options={{ title: 'Cartão físico', headerTitleAlign: 'center', headerTransparent: true }} component={Fisiccard} />
                 <Stack.Screen name='ConfigCardFisic' options={{ title: 'Configurar Cartão', headerTitleAlign: 'center', headerTransparent: true }} component={ConfigCardFisic} />
                 <Stack.Screen name='Virtualcard' options={{ title: '', headerTransparent: true }} component={Virtualcard} />
+                <Stack.Screen name='UserForm' options={{ title: '', headerTransparent: true }} component={UserForm} />
             </Stack.Navigator>
         </NavigationContainer>
     );

@@ -28,7 +28,7 @@ const createaccountStyle = StyleSheet.create({
   },
   textBox: {
     backgroundColor: "#efefef",
-    height: 50,
+    height: 30,
     width: 150,
     borderRadius: 50,
     marginTop: 15,

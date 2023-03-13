@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { View, Text, TextInput, Alert, TouchableOpacity } from "react-native";
@@ -19,7 +20,7 @@ export default function Login({ navigation }) {
       password: pass,
     };
 
-    fetch("http://192.168.0.102:9595/login/", {
+    fetch("http://192.168.0.102:8000/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

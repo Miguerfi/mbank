@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState } from "react";
 import { View, TextInput, Alert, TouchableOpacity, Text } from "react-native";
 import createaccountStyle from "./style";
@@ -7,16 +8,20 @@ export default function UserForm({ navigation }) {
   const [cpf, setCpf] = useState("");
   const [nick, setNick] = useState("");
   const [birthdate, setBirthdate] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handlePress = () => {
     const user = {
       full_name: fullName,
       cpf: cpf,
       nick: nick,
-      birth_date: birthdate,
+      birthdate: birthdate,
+      password: password,
+      email: email,
     };
 
-    fetch("http://192.168.0.102:9595/createaccount/", {
+    fetch("http://192.168.0.102:8000/createaccount/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,8 +31,10 @@ export default function UserForm({ navigation }) {
       .then((response) => {
         console.log(response.status);
         if (response.status === 201) {
-          navigation.navigate("MainScreen");
+          response.json().then(data => AsyncStorage.setItem("token",data.token))
+          navigation.navigate("Login");
         } else {
+          console.log(response.data)
           Alert.alert("Erro", "Não foi possível criar o usuário.");
         }
       })
@@ -62,6 +69,16 @@ export default function UserForm({ navigation }) {
         onChangeText={(text) => setBirthdate(text)}
         style={createaccountStyle.textBox}
       />
+      <TextInput
+        placeholder="Email"
+        value={email}
+        onChangeText={(text) => setEmail(text)}
+        style={createaccountStyle.textBox}
+      />
+      <TextInput placeholder="Senha"
+      value={password}
+      onChangeText={(text) => setPassword(text)}
+      style={createaccountStyle.textBox}/>
       <View>
         <TouchableOpacity
           style={createaccountStyle.button}

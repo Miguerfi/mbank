@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import {
   View,
   TouchableOpacity,
@@ -16,8 +16,24 @@ import ListHorizontal from "../../../components/ListHorizontalInfos";
 import { FontAwesome } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 import { ScrollView, RefreshControl } from "react-native-gesture-handler";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Infos({ navigation }) {
+  const [accountBalance, setaccountBalance] = useState(null);
+
+  const Apiurl = "http://192.168.0.102:8000/";
+
+  const getToken = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      console.log(token);
+      return token;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const trazer_salario = require("../../../../img/bringpayment.png");
   const extrato = require("../../../../img/extrato.png");
   const cobrar = require("../../../../img/money-talk.png");
@@ -64,8 +80,50 @@ export default function Infos({ navigation }) {
     },
   ];
 
+  useEffect(() => {
+    const fetchSaldo = async () => {
+      try {
+        const token = await getToken();
+
+        const config = {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        };
+
+        const response = await axios.get(`${Apiurl}saldo`, config);
+
+        const saldo = response.data.saldo;
+        setaccountBalance(saldo);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSaldo();
+  }, []);
+
   const onRefresh = useCallback(() => {
     setRefreshing(true);
+
+    const fetchSaldo = async () => {
+      try {
+        const token = await getToken();
+
+        const config = {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        };
+
+        const response = await axios.get(`${Apiurl}saldo`, config);
+
+        const saldo = response.data.saldo;
+        setaccountBalance(saldo);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchSaldo();
 
     setRefreshing(false);
   }, []);
@@ -78,7 +136,7 @@ export default function Infos({ navigation }) {
         }
       >
         <Text style={infoStyle.textInfo}>Saldo disponível</Text>
-        <Text style={infoStyle.saldoInfo}>R$ 800,25</Text>
+        <Text style={infoStyle.saldoInfo}>R$ {accountBalance}</Text>
         <TouchableOpacity style={infoStyle.guardadoInfo}>
           <Text style={infoStyle.dinheiroGInfo}>Dinheiro Guardado</Text>
           <Text style={infoStyle.dinheiroInfo}>R$ 50000,00</Text>

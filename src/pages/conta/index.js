@@ -157,7 +157,7 @@ export default function ContaInfos() {
         const token = await getToken();
         const config = {
           headers: {
-            Authorization: "Token ${token}",
+            Authorization: `Token ${token}`,
           },
         };
         const response = await axios.get(`${Apiurl}me/`, config);

@@ -22,8 +22,17 @@ import { ScrollView } from "react-native-gesture-handler";
 export default function ContaInfos() {
   const navigation = useNavigation();
   const [selectedpfp, setSelectedpfp] = useState(null);
+  const [accountBalance, setaccountBalance] = useState(0);
+  const hiddenvalue = "●●●●";
+  const [hidevalue, sethideValue] = useState(accountBalance);
+
+  const [nick, setNick] = useState(null);
+
+  const Apiurl = "http://192.168.0.102:8000/";
 
   const [status, requestPermission] = ImagePicker.useCameraPermissions();
+
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -67,14 +76,6 @@ export default function ContaInfos() {
   const handlePress = () => {
     navigation.navigate("a");
   };
-
-  const [accountBalance, setaccountBalance] = useState(null);
-  const hiddenvalue = "●●●●";
-  const [hidevalue, sethideValue] = useState(hiddenvalue);
-
-  const [nick, setNick] = useState(null);
-
-  const Apiurl = "http://192.168.0.102:8000/";
 
   const getToken = async () => {
     try {
@@ -128,8 +129,6 @@ export default function ContaInfos() {
     fetchSaldo();
   }, []);
 
-  const [refreshing, setRefreshing] = useState(false);
-
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     const fetchSaldo = async () => {
@@ -170,7 +169,6 @@ export default function ContaInfos() {
     };
     getUser();
 
-    sethideValue(hidevalue === accountBalance);
     console.log("Refreshed");
     setRefreshing(false);
   }, []);

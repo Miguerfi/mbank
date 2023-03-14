@@ -1,11 +1,10 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import {
   View,
   Text,
   TouchableOpacity,
   Image,
   ScrollView,
-  RefreshControl,
   SafeAreaView,
 } from "react-native";
 import fscard from "./style";
@@ -15,33 +14,51 @@ import { Ionicons } from "@expo/vector-icons";
 import { Feather } from "@expo/vector-icons";
 import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Fisiccard({ navigation }) {
-  const [refreshing, setRefreshing] = useState(false);
-
   const ccdefault = require("../../../../../../img/mainbasev2.png");
-  const onRefresh = useCallback(() => {
-    setRefreshing(true);
+  const [fullname, setfullName] = useState(null);
 
-    setRefreshing(false);
-  }, []);
+  const Apiurl = "http://192.168.0.102:8000/";
 
+  const getToken = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      console.log(token);
+      return token;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const secondary_navigation = useNavigation();
   const Confgicard = () => {
     secondary_navigation.navigate("ConfigCardFisic");
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const token = await getToken();
+        const config = {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        };
+        const response = await axios.get(`${Apiurl}me/`, config);
+        console.log(response.data.nick);
+        const full_name = response.data.full_name;
+        setfullName(full_name);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUser();
+  }, []);
   return (
     <View style={fscard.main}>
-      <ScrollView
-        showsVerticalScrollIndicator={false}
-        refreshControl={
-          <RefreshControl
-            refreshing={refreshing}
-            onRefresh={onRefresh}
-            style={fscard.refresh}
-          />
-        }
-      >
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View style={fscard.drawcc}>
           <LinearGradient
             colors={["#ae40f5", "#830ad1"]}
@@ -50,7 +67,7 @@ export default function Fisiccard({ navigation }) {
             end={{ x: 0, y: 0 }}
           ></LinearGradient>
           <Image style={fscard.basecard} source={ccdefault} />
-          <Text style={fscard.namecc}>Jose M A Silva</Text>
+          <Text style={fscard.namecc}>{fullname}</Text>
         </View>
         <View>
           <View style={fscard.circle}>
@@ -92,7 +109,7 @@ export default function Fisiccard({ navigation }) {
         </View>
         <View>
           <Text style={fscard.usrcchead}>Nome</Text>
-          <Text style={fscard.usrccinfo}>Jose M A Silva</Text>
+          <Text style={fscard.usrccinfo}>{fullname}</Text>
         </View>
         <View>
           <Text style={fscard.usrcchead}>Validade</Text>

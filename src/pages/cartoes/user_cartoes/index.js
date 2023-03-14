@@ -1,23 +1,65 @@
 import { AntDesign, Ionicons } from "@expo/vector-icons";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import usrcards from "./style";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { Octicons } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
-
+import axios from "axios";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 export default function Usercards({ navigation }) {
-  const ccnumber = "0123456789101214";
+  const [ccnumberFisic, setccnumberFisic] = useState(0);
+  const [cvvFisic, setcvvFisic] = useState(0);
+  const [expdataFisic, setexpdataFisic] = useState(0);
+
+  const ccNumberFisicString = ccnumberFisic.toString()
+
+  const numberTrunced = ccNumberFisicString.replace(/(.{4})/g,'$1 ')
+
+  const Apiurl = "http://192.168.0.102:8000/";
 
   const navigation_secondary = useNavigation();
-
+  const getToken = async () => {
+    try {
+      const token = await AsyncStorage.getItem("token");
+      console.log(token);
+      return token;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const Fisiccard = () => {
     navigation_secondary.navigate("Fisiccard");
   };
   const Virtualcard = () => {
     navigation_secondary.navigate("Virtualcard");
   };
+  useEffect(() => {
+    const fetchFisicCardInfos = async () => {
+      try {
+        const token = await getToken();
+
+        const config = {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        };
+
+        const response = await axios.get(`${Apiurl}get_card_infos`, config);
+
+        const ccnumberF = response.data.card;
+        const ccvvFisisc = response.data.cvv;
+        const expdataFisic = response.data.exp_data;
+        setccnumberFisic(ccnumberF);
+        setcvvFisic(ccvvFisisc);
+        setexpdataFisic(expdataFisic);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFisicCardInfos();
+  }, []);
   return (
     <View style={usrcards.main}>
       <Text style={usrcards.headerText}>Meus cartões</Text>
@@ -30,7 +72,7 @@ export default function Usercards({ navigation }) {
             numberOfLines={1}
             ellipsizeMode="head"
           >
-            ●●● {ccnumber.substring(0, 4)}
+            ●●● {numberTrunced.substring(0,4)}
           </Text>
           <MaterialCommunityIcons
             style={usrcards.ccicon}
@@ -55,7 +97,7 @@ export default function Usercards({ navigation }) {
             numberOfLines={1}
             ellipsizeMode="head"
           >
-            ●●● {ccnumber.substring(0, 4)}
+            ●●●
           </Text>
 
           <MaterialCommunityIcons

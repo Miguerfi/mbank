@@ -21,6 +21,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 export default function Infos({ navigation }) {
   const [accountBalance, setaccountBalance] = useState(null);
+  const [moneySaved, setmoneySaved] = useState(null);
+  const [moneyApplied, setmoneyApplied] = useState(null);
 
   const Apiurl = "http://192.168.0.102:8000/";
 
@@ -94,7 +96,11 @@ export default function Infos({ navigation }) {
         const response = await axios.get(`${Apiurl}saldo`, config);
 
         const saldo = response.data.saldo;
+        const dinheiroGuardado = response.data.dinheiro_guardado;
+        const dinheiroAplicado = response.data.dinheiro_aplicado;
         setaccountBalance(saldo);
+        setmoneySaved(dinheiroGuardado);
+        setmoneyApplied(dinheiroAplicado);
       } catch (error) {
         console.log(error);
       }
@@ -139,7 +145,7 @@ export default function Infos({ navigation }) {
         <Text style={infoStyle.saldoInfo}>R$ {accountBalance}</Text>
         <TouchableOpacity style={infoStyle.guardadoInfo}>
           <Text style={infoStyle.dinheiroGInfo}>Dinheiro Guardado</Text>
-          <Text style={infoStyle.dinheiroInfo}>R$ 50000,00</Text>
+          <Text style={infoStyle.dinheiroInfo}>R$ {moneySaved}</Text>
           <MaterialCommunityIcons
             style={infoStyle.piggy}
             name="piggy-bank-outline"
@@ -158,7 +164,7 @@ export default function Infos({ navigation }) {
             Rendimento total da conta
           </Text>
           <Text style={infoStyle.rendimentoimes}>
-            <Text style={infoStyle.rendimento}>+R$ 125,00</Text>
+            <Text style={infoStyle.rendimento}>+R$ {moneyApplied}</Text>
             <Text style={infoStyle.mes}> este mês</Text>
           </Text>
           <FontAwesome5

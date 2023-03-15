@@ -16,11 +16,15 @@ import { FlatList } from "react-native-gesture-handler";
 import { useNavigation } from "@react-navigation/native";
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import moment from "moment";
 
 export default function Fisiccard({ navigation }) {
   const ccdefault = require("../../../../../../img/mainbasev2.png");
   const [fullname, setfullName] = useState(null);
+  const [expdata, setexpdata] = useState(null);
+  const formatexpData = moment(expdata).format("MM / YY");
 
+  const [typecard, setTypecard] = useState(null);
   const Apiurl = "http://192.168.0.102:8000/";
 
   const getToken = async () => {
@@ -36,6 +40,35 @@ export default function Fisiccard({ navigation }) {
   const Confgicard = () => {
     secondary_navigation.navigate("ConfigCardFisic");
   };
+
+  useEffect(() => {
+    const fetchFisicCardInfos = async () => {
+      try {
+        const token = await getToken();
+
+        const config = {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        };
+
+        const response = await axios.get(`${Apiurl}get_card_infos`, config);
+        const expdata_response = response.data.exp_data;
+        setexpdata(expdata_response);
+
+        if (response.data.type_card === "gl") {
+          setTypecard("Gold");
+        } else if (response.data.type_card === "pt") {
+          setTypecard("Platinum");
+        } else {
+          setTypecard("Diamond");
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchFisicCardInfos();
+  }, []);
 
   useEffect(() => {
     const getUser = async () => {
@@ -113,11 +146,11 @@ export default function Fisiccard({ navigation }) {
         </View>
         <View>
           <Text style={fscard.usrcchead}>Validade</Text>
-          <Text style={fscard.usrccinfo}>12 / 30</Text>
+          <Text style={fscard.usrccinfo}>{formatexpData}</Text>
         </View>
         <View style={fscard.sizebox}>
           <Text style={fscard.usrcchead}>Mastercard</Text>
-          <Text style={fscard.usrcctype}>Gold</Text>
+          <Text style={fscard.usrcctype}>{typecard}</Text>
           <Text style={fscard.usrfunchead}>Função</Text>
           <Text style={fscard.usrfuncinfo}>Débito e crédito</Text>
         </View>

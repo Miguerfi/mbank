@@ -13,10 +13,11 @@ export default function Usercards({ navigation }) {
   const [cvvFisic, setcvvFisic] = useState(0);
   const [expdataFisic, setexpdataFisic] = useState(0);
 
-  const ccNumberFisicString = ccnumberFisic.toString()
+  const ccNumberFisicString = ccnumberFisic.toString();
 
-  const numberTrunced = ccNumberFisicString.replace(/(.{4})/g,'$1 ')
+  const numberTrunced = ccNumberFisicString.replace(/(.{4})/g, "$1 ");
 
+  const [ownerCard,setOwnerCard] = useState(null)
   const Apiurl = "http://192.168.0.102:8000/";
 
   const navigation_secondary = useNavigation();
@@ -35,6 +36,27 @@ export default function Usercards({ navigation }) {
   const Virtualcard = () => {
     navigation_secondary.navigate("Virtualcard");
   };
+  useEffect(() => {
+    const getMe = async () => {
+      try {
+        const token = await getToken();
+
+        const config = {
+          headers: {
+            Authorization: `Token ${token}`,
+          },
+        };
+
+        const response = await axios.get(`${Apiurl}me`,config)
+        const user_full_name = response.data.full_name
+        console.log(user_full_name)
+        setOwnerCard(user_full_name)
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getMe()
+  },[]);
   useEffect(() => {
     const fetchFisicCardInfos = async () => {
       try {
@@ -66,13 +88,13 @@ export default function Usercards({ navigation }) {
       <Text style={usrcards.headerTypecard}>Cartão físico</Text>
       <TouchableOpacity onPress={Fisiccard} style={usrcards.card}>
         <View style={usrcards.cardView}>
-          <Text style={usrcards.cardTextname}>JOSE M A SILVA</Text>
+          <Text style={usrcards.cardTextname}>{ownerCard}</Text>
           <Text
             style={usrcards.ccnumber}
             numberOfLines={1}
             ellipsizeMode="head"
           >
-            ●●● {numberTrunced.substring(0,4)}
+            ●●● {numberTrunced.substring(0, 4)}
           </Text>
           <MaterialCommunityIcons
             style={usrcards.ccicon}

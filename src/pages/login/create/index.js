@@ -53,6 +53,7 @@ export default function UserForm({ navigation }) {
       />
       <TextInput
         placeholder="CPF"
+        keyboardType="numeric"
         value={cpf}
         onChangeText={(text) => setCpf(text)}
         style={createaccountStyle.textBox}
@@ -71,12 +72,14 @@ export default function UserForm({ navigation }) {
       />
       <TextInput
         placeholder="Email"
+        keyboardType="email-address"
         value={email}
         onChangeText={(text) => setEmail(text)}
         style={createaccountStyle.textBox}
       />
       <TextInput placeholder="Senha"
       value={password}
+        secureTextEntry={true}
       onChangeText={(text) => setPassword(text)}
       style={createaccountStyle.textBox}/>
       <View>

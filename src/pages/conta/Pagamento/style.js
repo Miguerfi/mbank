@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dimensions, StyleSheet } from "react-native";
-import { responsiveWidth } from "react-native-responsive-dimensions";
+import { responsiveHeight, responsiveWidth } from "react-native-responsive-dimensions";
 
 const pgtStyle = StyleSheet.create({
   container: {
-    height: Dimensions.get("screen").height,
+    height: 600,
     padding: 2,
   },
   textHeader: {
@@ -15,9 +15,13 @@ const pgtStyle = StyleSheet.create({
     marginTop: 85,
   },
   closebutton: {
-    position: "absolute",
-    marginTop: 35.5,
-    marginLeft: 12.5,
+    height:30,
+    width:30,
+    borderRadius:50,
+    alignItems:'center',
+    marginLeft:15,
+    marginTop:30,
+    position:'absolute'
   },
   headerQRCODE: {
     fontSize: 18,

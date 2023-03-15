@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import { RFValue } from "react-native-responsive-fontsize";
 
 const usrcards = StyleSheet.create({
   main: {
@@ -35,7 +36,7 @@ const usrcards = StyleSheet.create({
     marginTop: 7.5,
     marginLeft: 55,
     fontWeight: "bold",
-    fontSize: 15,
+    fontSize: RFValue(13.5),
     color: "grey",
   },
   ccnumber: {

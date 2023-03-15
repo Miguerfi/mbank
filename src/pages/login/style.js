@@ -39,6 +39,16 @@ const loginStyle = StyleSheet.create({
   createText: {
     color: "#830ad1",
   },
+  rememberMeContainer:{
+    marginLeft:-170,
+    marginBottom:10
+  },
+  rememberMeText:{
+    position:'absolute',
+    marginLeft:30,
+    fontWeight:'400'
+  },
+
 });
 
 export default loginStyle;

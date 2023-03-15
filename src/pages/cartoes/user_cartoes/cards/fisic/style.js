@@ -31,6 +31,7 @@ const fscard = StyleSheet.create({
     color: "white",
     marginTop: 155,
     marginLeft: 15,
+    fontWeight:'bold'
   },
   texture: {
     flex: 1,

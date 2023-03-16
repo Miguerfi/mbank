@@ -27,38 +27,38 @@ const transF = StyleSheet.create({
   valuechange: {
     fontSize: RFValue(42),
     fontWeight: "bold",
-    marginLeft: responsiveHeight(11,Dimensions.get('screen').width),
+    marginLeft: responsiveHeight(11, Dimensions.get("screen").width),
     marginTop: 30,
   },
   drawline: {
     height: 2,
     backgroundColor: "#efefef",
     width: 320,
-    marginLeft:15
+    marginLeft: 15,
   },
-  right:{
-    marginTop:300,
-    backgroundColor:'#830ad1',
-    height:60,
-    width:60,
-    alignSelf:'flex-end',
-    marginRight:10,
-    alignItems:'center',
-    borderRadius:50
+  right: {
+    marginTop: responsiveHeight(48.5, Dimensions.get("screen").height),
+    backgroundColor: "#830ad1",
+    height: 60,
+    width: 60,
+    alignSelf: "flex-end",
+    marginRight: 10,
+    alignItems: "center",
+    borderRadius: 50,
   },
-  rightIcon:{
-    marginTop:13.5,
+  rightIcon: {
+    marginTop: 13.5,
   },
-  moneyType:{
+  moneyType: {
     fontSize: RFValue(45),
     fontWeight: "bold",
     marginLeft: 15,
     marginTop: 25,
-    position:'absolute'
+    position: "absolute",
   },
-  invalidValue:{
-    color:'red'
-  }
+  invalidValue: {
+    color: "red",
+  },
 });
 
 export default transF;

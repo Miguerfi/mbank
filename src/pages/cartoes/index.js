@@ -32,11 +32,13 @@ export default function Cartoes() {
   }, []);
 
   async function createCard() {
-    const token = await getToken() 
+    const token = await getToken();
     fetch(`${Apiurl}create_card/`, {
       method: "POST",
-      headers: { "Content-Type": "application/json",
-                'Authorization': `Token ${token}`},
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Token ${token}`,
+      },
       body: JSON.stringify({}),
     }).then((response) => {
       if (response.status === 201) {
@@ -61,8 +63,13 @@ export default function Cartoes() {
         </TouchableOpacity>
       ) : (
         <TouchableOpacity onPress={createCard}>
-          <FontAwesome style={cartoeStyle.phone} name="plus-square-o" size={30}  color="black" />
-            <Text style={cartoeStyle.Text}>Criar Cartão</Text>
+          <FontAwesome
+            style={cartoeStyle.phone}
+            name="plus-square-o"
+            size={30}
+            color="black"
+          />
+          <Text style={cartoeStyle.Text}>Criar Cartão</Text>
         </TouchableOpacity>
       )}
     </View>

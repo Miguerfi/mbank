@@ -6,7 +6,6 @@ import Transferencias from "../../pages/transferencia";
 import Pagamento from "../../pages/conta/Pagamento";
 
 export default function ListHorizontalInfos({ data }) {
-
   const [modalVisible, setModalVisible] = useState(false);
   const [selectedModal, setSelectedModal] = useState(null);
 

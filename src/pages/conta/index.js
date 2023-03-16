@@ -119,7 +119,6 @@ export default function ContaInfos() {
         };
 
         const response = await axios.get(`${Apiurl}saldo`, config);
-
         const saldo = response.data.saldo;
         setaccountBalance(saldo);
       } catch (error) {
@@ -223,7 +222,7 @@ export default function ContaInfos() {
             size={30}
             color="black"
           />
-          <Text style={accstyles.contaDinheiro}>R$ {hidevalue}</Text>
+          <Text style={accstyles.contaDinheiro}>R$ {accountBalance}</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>

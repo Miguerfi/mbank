@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from "react";
-import {
-  View,
-  Modal,
-  TouchableOpacity,
-  TextInput,
-  Text,
-  Alert,
-} from "react-native";
+import { View, Modal, TouchableOpacity, Text } from "react-native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
 import transF from "./style";
 import TypeTransferencia from "../../components/modals/transferencia";
-export default function Transferencias({ closeModal }) {
+import CurrencyInput from "react-native-currency-input";
+export default function Transferencias({ closeModal, visible }) {
   const [ownerCard, setOwnerCard] = useState(null);
 
   const [saldoEnvio, setSaldoEnvio] = useState(0);
 
-  const [modalSecondaryVisible, setModalSecondaryVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   const Apiurl = "http://192.168.0.102:8000/";
 
-  const openTypeTransferencia = () => {
-    setModalSecondaryVisible(true);
+  const handleOpenModal = () => {
+    setModalVisible(true);
   };
-
+  const handleCloseModal = () => {
+    setModalVisible(false);
+  };
   const getToken = async () => {
     try {
       const token = await AsyncStorage.getItem("token");
@@ -55,10 +51,22 @@ export default function Transferencias({ closeModal }) {
 
   const checkValueTransferencia = () => {
     if (parseInt(saldoEnvio) > ownerCard) {
-      Alert.alert("Saldo Insuficiente")
+      Alert.alert("Saldo Insuficiente");
     } else {
-      openTypeTransferencia();
+      handleOpenModal();
+      handleSalvarValor();
     }
+  };
+  const saveValue = async (key, value) => {
+    try {
+      await AsyncStorage.setItem(key, value);
+      console.log(`Valor salvo com sucesso: ${value}`);
+    } catch (e) {
+      console.log(`Erro ao salvar valor: ${e}`);
+    }
+  };
+  const handleSalvarValor = () => {
+    saveValue("value", JSON.stringify(saldoEnvio));
   };
 
   return (
@@ -73,29 +81,34 @@ export default function Transferencias({ closeModal }) {
         </Text>
         <View style={transF.viewValue}>
           <Text style={transF.moneyType}>R$</Text>
-          <TextInput
+          <CurrencyInput
+            value={saldoEnvio}
             style={transF.valuechange}
             placeholder="0,00"
-            onChangeText={(value) => setSaldoEnvio(value)}
-            keyboardType="numeric"
+            separator=","
+            precision={2}
+            onChangeValue={(value) => setSaldoEnvio(value)}
           />
         </View>
         <View style={transF.drawline} />
-        <TouchableOpacity
-          onPress={checkValueTransferencia}
-          style={transF.right}
-        >
-          <Feather
-            name="arrow-right"
-            style={transF.rightIcon}
-            size={30}
-            color="white"
+        <View>
+          <TouchableOpacity
+            onPress={checkValueTransferencia}
+            style={transF.right}
+          >
+            <Feather
+              name="arrow-right"
+              style={transF.rightIcon}
+              size={30}
+              color="white"
+            />
+          </TouchableOpacity>
+          <TypeTransferencia
+            visible={modalVisible}
+            closeModalSecondary={handleCloseModal}
           />
-        </TouchableOpacity>
+        </View>
       </View>
-      {modalSecondaryVisible && (
-        <TypeTransferencia closeModalSecondary={closeModal} />
-      )}
     </Modal>
   );
 }

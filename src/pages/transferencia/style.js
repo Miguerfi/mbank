@@ -59,6 +59,16 @@ const transF = StyleSheet.create({
   invalidValue: {
     color: "red",
   },
+  textInputMessage: {
+    marginLeft: 15,
+    fontSize: RFValue(20),
+    marginTop: 10,
+    color: "grey",
+    fontWeight: "bold",
+    padding: 10,
+    backgroundColor: "#efefef",
+    borderRadius: 50,
+  },
 });
 
 export default transF;

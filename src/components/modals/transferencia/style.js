@@ -1,4 +1,5 @@
 import { Dimensions, StyleSheet } from "react-native";
+import { responsiveHeight } from "react-native-responsive-dimensions";
 import { RFValue } from "react-native-responsive-fontsize";
 
 const transFfocus = StyleSheet.create({
@@ -39,7 +40,7 @@ const transFfocus = StyleSheet.create({
     borderRadius: 50,
     alignItems: "center",
     alignSelf: "flex-end",
-    marginTop: 350,
+    marginTop: responsiveHeight(35),
   },
   buttonIco: {
     marginTop: 5,

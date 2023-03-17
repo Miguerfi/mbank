@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Modal, TouchableOpacity, Text, TextInput } from "react-native";
+import { View, Modal, TouchableOpacity, Text,TextInput } from "react-native";
 import { Ionicons, Feather } from "@expo/vector-icons";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import axios from "axios";
@@ -10,8 +10,6 @@ export default function Transferencias({ closeModal, visible }) {
   const [ownerCard, setOwnerCard] = useState(null);
 
   const [saldoEnvio, setSaldoEnvio] = useState(0);
-
-  const [message, setMessage] = useState("");
 
   const [modalVisible, setModalVisible] = useState(false);
   const Apiurl = "http://192.168.0.102:8000/";
@@ -62,7 +60,7 @@ export default function Transferencias({ closeModal, visible }) {
   const saveValue = async (key, value) => {
     try {
       await AsyncStorage.setItem(key, value);
-      await AsyncStorage.setItem("message", message);
+      console.log(`Valor salvo com sucesso: ${value}`);
     } catch (e) {
       console.log(`Erro ao salvar valor: ${e}`);
     }
@@ -95,6 +93,7 @@ export default function Transferencias({ closeModal, visible }) {
             style={transF.textInputMessage}
             placeholder="Digite uma mensagem"
             onChangeText={(text) => setMessage(text)}
+            value={message}
             keyboardType="default"
           />
         </View>

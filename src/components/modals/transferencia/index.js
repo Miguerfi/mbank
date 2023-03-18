@@ -63,7 +63,7 @@ export default function TypeTransferencia({ closeModalSecondary, visible }) {
     })
       .then((response) => {
         if (response.status === 200) {
-          setSucessModalVisible(true);
+          console.log("OK");
         } else {
           Alert.alert("Erro,não foi possivel fazer a transação");
         }
@@ -71,7 +71,7 @@ export default function TypeTransferencia({ closeModalSecondary, visible }) {
       })
       .then((data) => {
         AsyncStorage.setItem("transactionInfos", JSON.stringify(data));
-        console.log(data);
+        setSucessModalVisible(true);
       })
       .catch((error) => {
         console.error(error);

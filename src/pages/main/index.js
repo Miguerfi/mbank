@@ -4,6 +4,7 @@ import styles from "./style";
 import ContaInfos from "../conta";
 import Operacoes from "../operacoes";
 import Cartoes from "../cartoes";
+import Anouncements from "../informations";
 
 export default function MainScreen({ navigation }) {
   return (
@@ -11,6 +12,7 @@ export default function MainScreen({ navigation }) {
       <ContaInfos />
       <Operacoes />
       <Cartoes />
+      <Anouncements />
     </View>
   );
 }

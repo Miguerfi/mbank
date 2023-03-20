@@ -17,7 +17,8 @@ export default function Usercards({ navigation }) {
 
   const numberTrunced = ccNumberFisicString.replace(/(.{4})/g, "$1 ");
 
-  const [ownerCard,setOwnerCard] = useState(null)
+  const [ownerCard, setOwnerCard] = useState(null);
+  const [nick, setNick] = useState(null);
   const Apiurl = "http://192.168.0.102:8000/";
 
   const navigation_secondary = useNavigation();
@@ -47,16 +48,17 @@ export default function Usercards({ navigation }) {
           },
         };
 
-        const response = await axios.get(`${Apiurl}me`,config)
-        const user_full_name = response.data.full_name
-        console.log(user_full_name)
-        setOwnerCard(user_full_name)
+        const response = await axios.get(`${Apiurl}me`, config);
+        const user_full_name = response.data.full_name;
+        const nick_name = response.data.nick;
+        setNick(nick_name)
+        setOwnerCard(user_full_name);
       } catch (error) {
         console.log(error);
       }
     };
-    getMe()
-  },[]);
+    getMe();
+  }, []);
   useEffect(() => {
     const fetchFisicCardInfos = async () => {
       try {
@@ -113,7 +115,7 @@ export default function Usercards({ navigation }) {
       <Text style={usrcards.headerTypecardV}>Cartão virutal</Text>
       <TouchableOpacity onPress={Virtualcard} style={usrcards.card}>
         <View style={usrcards.cardView}>
-          <Text style={usrcards.cardTextname}>Miguer</Text>
+          <Text style={usrcards.cardTextname}>{nick}</Text>
           <Text
             style={usrcards.ccnumber}
             numberOfLines={1}

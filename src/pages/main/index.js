@@ -1,10 +1,11 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, FlatList } from "react-native";
 import styles from "./style";
 import ContaInfos from "../conta";
 import Operacoes from "../operacoes";
 import Cartoes from "../cartoes";
 import Anouncements from "../informations";
+import Credit from "../credit";
 
 export default function MainScreen({ navigation }) {
   return (
@@ -13,6 +14,7 @@ export default function MainScreen({ navigation }) {
       <Operacoes />
       <Cartoes />
       <Anouncements />
+      <Credit />
     </View>
   );
 }

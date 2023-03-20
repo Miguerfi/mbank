@@ -1,6 +1,9 @@
 import { StyleSheet } from "react-native";
 
 const style = StyleSheet.create({
+  click:{
+    height:150
+  },
   container:{
     backgroundColor:'#efefef',
     height:100,

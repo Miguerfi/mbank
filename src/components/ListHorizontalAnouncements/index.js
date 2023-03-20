@@ -16,7 +16,7 @@ export default function ListHorizontalAnouncements({ data }) {
         overScrollMode="auto"
         showsHorizontalScrollIndicator={false}
         renderItem={({ item }) => (
-          <TouchableOpacity>
+          <TouchableOpacity style={style.click}>
             <View style={style.container}>
               <Text style={style.infos}>
                 <Text style={style.destaque}>{item.destaque}</Text>

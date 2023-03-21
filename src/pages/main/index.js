@@ -8,18 +8,20 @@ import Anouncements from "../informations";
 import Credit from "../credit";
 import PaymentAssistent from "../paymentAssistent";
 import { ScrollView } from "react-native-gesture-handler";
+import LifeInsurance from "../lifeinsurence";
 
 export default function MainScreen({ navigation }) {
   return (
     <ScrollView style={styles.container}>
-        <View>
-          <ContaInfos />
-          <Operacoes />
-          <Cartoes />
-          <Anouncements />
-          <Credit />
-          <PaymentAssistent />
-        </View>
+      <View>
+        <ContaInfos />
+        <Operacoes />
+        <Cartoes />
+        <Anouncements />
+        <Credit />
+        <PaymentAssistent />
+        <LifeInsurance />
+      </View>
     </ScrollView>
   );
 }
